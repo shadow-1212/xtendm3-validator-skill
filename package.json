@@ -1,5 +1,5 @@
 {
-  "name": "@tovonirina/xtendm3-validator-skill",
+  "name": "xtendm3-validator-skill",
   "version": "1.0.0",
   "description": "Claude Skill for XtendM3 API development - Interactive with Claude capabilities",
   "main": "lib/index.js",
