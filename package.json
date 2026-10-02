@@ -1,0 +1,33 @@
+{
+  "name": "@tovonirina/xtendm3-validator-skill",
+  "version": "1.0.0",
+  "description": "Claude Skill for XtendM3 API development - Interactive with Claude capabilities",
+  "main": "lib/index.js",
+  "bin": {
+    "xtendm3-skill-install": "install.js"
+  },
+  "scripts": {
+    "postinstall": "node install.js",
+    "install-skill": "node install.js"
+  },
+  "keywords": [
+    "xtendm3",
+    "skill",
+    "claude",
+    "groovy",
+    "m3",
+    "infor",
+    "api-generator",
+    "validator"
+  ],
+  "author": "Tovonirina Andrianarivelo <tovonirina.andrianarivelo@spoonconsulting.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tovonirina/xtendm3-validator-skill.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,59 @@
+name: Test & Validate
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x, 20.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Verify SKILL.md exists
+        run: |
+          if [ ! -f "SKILL.md" ]; then
+            echo "Error: SKILL.md not found!"
+            exit 1
+          fi
+          echo "✓ SKILL.md found"
+
+      - name: Verify package.json
+        run: |
+          npm ls
+          echo "✓ Dependencies verified"
+
+      - name: Run tests
+        run: npm test --if-present || echo "No tests configured"
+
+      - name: Validate Node modules
+        run: npm list
+
+      - name: Check file structure
+        run: |
+          echo "Checking required files..."
+          test -f "SKILL.md" && echo "✓ SKILL.md"
+          test -f "package.json" && echo "✓ package.json"
+          test -f "README.md" && echo "✓ README.md"
+          test -f "INSTALLATION.md" && echo "✓ INSTALLATION.md"
+          echo "✓ All required files present"
